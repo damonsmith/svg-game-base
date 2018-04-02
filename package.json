@@ -1,0 +1,24 @@
+{
+	"name": "svg-to-box2d",
+	"version": "1.0.0",
+	"description": "A web game framework that converts SVG images into Box2D games",
+	"scripts": {
+		"build": "webpack --config webpack.config.ts"
+	},
+	"main": "index.js",
+	"repository": "ssh://git@lry.io/home/git/Games.git",
+	"author": "Damon Smith <damon.default@gmail.com>",
+	"license": "GPL-3.0",
+	"private": false,
+	"dependencies": {
+		"lucy-b2": "^1.0.1",
+		"planck-js": "^0.1.43"
+	},
+	"devDependencies": {
+		"ts-loader": "^4.1.0",
+		"ts-node": "^5.0.1",
+		"typescript": "^2.8.1",
+		"webpack": "^4.4.1",
+		"webpack-cli": "^2.0.13"
+	}
+}

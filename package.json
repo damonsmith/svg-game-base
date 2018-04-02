@@ -11,6 +11,7 @@
 	"license": "GPL-3.0",
 	"private": false,
 	"dependencies": {
+		"app-event-adapter": "^0.0.8",
 		"lucy-b2": "^1.0.1",
 		"planck-js": "^0.1.43"
 	},

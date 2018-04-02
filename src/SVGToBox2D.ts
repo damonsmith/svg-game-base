@@ -7,6 +7,15 @@ interface PathOptions {
 	viewBox?: boolean
 }
 
+export interface WorldData {
+	world: any
+	bodyMap: {[key: string]: any}
+	shapeMap: {[key: string]: any}
+	jointMap: {[key: string]: any}
+	size: {x: number, y: number}
+	viewBoxes: {[key: string]: any}
+}
+
 /**
  * Converts an SVG element into a Box2D World definition, using the element 
  * description to generate joints, welds, ropes and mouse points.
@@ -15,7 +24,7 @@ interface PathOptions {
  */
 export class SVGToBox2D {
 	
-	convertSVGToWorldData(svg: SVGElement) {
+	convertSVGToWorldData(svg: SVGElement): WorldData {
 		var bodyMap = {};
 		var shapeMap = {};
 		var jointMap = {};

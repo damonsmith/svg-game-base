@@ -1,6 +1,7 @@
 import { SVGToBox2D } from "./SVGToBox2D"
 import { WorldRunner } from "./WorldRunner"
 import { WorldRenderer, ImageDef, ImageDefMap } from "./WorldRenderer"
+import * as AppEventAdapter from "app-event-adapter"
 
 /**
  * This class is only concerned with the general tasks of starting a Box2D-SVG-JSSynth-Game scenario.
@@ -22,12 +23,13 @@ export class Scenario {
 	running: boolean
 	svgConverter: SVGToBox2D
 	runningInterval: number
+	appEventAdapter: AppEventAdapter
 
 	worldRenderer: WorldRenderer
+	worldRunner: WorldRunner
 
 	constructor() {
 		this.frameRate = 60;
-		loadImages();
 
 		//Load the first svg and the first canvas by default.
 		this.svg = document.getElementsByTagName("svg")[0];
@@ -35,21 +37,17 @@ export class Scenario {
 		
 		this.svgConverter = new SVGToBox2D();
 		this.worldRunner = new WorldRunner();
-		this.worldRenderer = new WorldRenderer(this.canvas);
-		this.worldRenderer.images = this.generateImageDefMapFromAnHTMLParentTag("sprites");
-		this.worldRenderer.backgroundImages = this.backgrounds;
-		this.worldRenderer.fixedImages = this.fixedImages;
+
+		let sprites = this.generateImageDefMapFromAnHTMLParentTag(document.getElementById("sprites"))
+		let backgrounds = this.generateImageDefMapFromAnHTMLParentTag(document.getElementById("backgrounds"))
+		let fixed = this.generateImageDefMapFromAnHTMLParentTag(document.getElementById("fixed"))
+
+		this.worldRenderer = new WorldRenderer(this.canvas, sprites, backgrounds, fixed);
 		
 		this.appEventAdapter = new AppEventAdapter(this.canvas);
 		
 		this.simulationEnabled = true;
 		this.renderingEnabled = true;
-	}
-
-	loadImages() {
-		this.addImagesFromContainer(document.getElementById("sprites"), this.sprites);
-		this.addImagesFromContainer(document.getElementById("backgrounds"), this.backgrounds);
-		this.addImagesFromContainer(document.getElementById("fixed"), this.fixedImages);
 	}
 
 	/**

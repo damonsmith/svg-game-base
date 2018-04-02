@@ -81,6 +81,10 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
+app-event-adapter@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/app-event-adapter/-/app-event-adapter-0.0.8.tgz#2ce1050076e19bef91d557dc2e9ec8c0e665db94"
+
 aproba@^1.0.3, aproba@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
